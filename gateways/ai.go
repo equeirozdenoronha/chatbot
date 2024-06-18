@@ -1,9 +1,9 @@
 package gateways
 
 import (
+	"fmt"
 	"bytes"
     "encoding/json"
-    "fmt"
     "net/http"
 )
 
@@ -22,7 +22,7 @@ func (g *RealChatGPTGateway) GetChatGPTResponse(apiKey string, message string) (
         return "", err
     }
 
-    req, err := http.NewRequest("POST", "https://api.openai.com/v1/completions", bytes.NewBuffer(requestBody))
+    req, err := http.NewRequest("POST", "https://api.openai.com/v1/chat/completions", bytes.NewBuffer(requestBody))
     if err != nil {
         return "", err
     }
@@ -42,9 +42,12 @@ func (g *RealChatGPTGateway) GetChatGPTResponse(apiKey string, message string) (
         return "", err
     }
 
+	fmt.Println("RESULT", result)
+
     if choices, ok := result["choices"].([]interface{}); ok && len(choices) > 0 {
         if choice, ok := choices[0].(map[string]interface{}); ok {
             if text, ok := choice["text"].(string); ok {
+				fmt.Println("TEXT FROM CHAT GPT: ", text)
                 return text, nil
             }
         }
