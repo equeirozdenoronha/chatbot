@@ -12,7 +12,7 @@ chatbot/
 │ ├── review_controller.go
 │ ├── review_controller_test.go
 ├── gateways/
-│ ├── chatgpt_gateway.go
+│ ├── ai_gateway.go
 ├── models/
 │ ├── interaction.go
 │ ├── review.go
@@ -25,7 +25,7 @@ chatbot/
 │ └── customer_repository.go
 │ └── customer_repository_test.go
 ├── utils/
-│ ├── mock_chatgpt_gateway.go
+│ ├── mock_ai_gateway.go
 │ ├── mock_repository.go
 ├── main.go
 ├── main_test.go

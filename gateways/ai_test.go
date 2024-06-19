@@ -1,21 +1,21 @@
 package gateways
 
 import (
-    "testing"
-	"github.com/stretchr/testify/assert"
 	utils "chatbot/utils"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
-func TestGetChatGPTResponse(t *testing.T) {
-    // Mock API key and message
-    apiKey := "test-api-key"
-    message := "Hello, how are you?"
+func TestGetAIResponse(t *testing.T) {
+	// Mock API key and message
+	apiKey := "test-api-key"
+	message := "Hello, how are you?"
 	expectedResponse := "Hi there!"
 
-	mockChatGPT := new(utils.MockChatGPTGateway)
-	mockChatGPT.On("GetChatGPTResponse", apiKey, message).Return(expectedResponse, nil)
-    // Mock response from ChatGPT
-    response, _ := mockChatGPT.GetChatGPTResponse(apiKey, message)
-    
+	mockAI := new(utils.MockAIGateway)
+	mockAI.On("GetAIResponse", apiKey, message).Return(expectedResponse, nil)
+	// Mock response from AI
+	response, _ := mockAI.GetAIResponse(apiKey, message)
+
 	assert.Equal(t, expectedResponse, response)
 }
